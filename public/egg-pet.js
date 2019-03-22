@@ -1,0 +1,1 @@
+//handles the js for egg-pet

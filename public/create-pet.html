@@ -1,15 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Dino Pets</title>
-    <script
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
-    <link href="index.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <p>Hello World</p>
-    <script src="index.js"></script>
+
+<head>
+	<title>Dino Pets</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	 crossorigin="anonymous">
+
+	</script>
+	<link href="create-pet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+	<h1>Choose Your Pet</h1>
+	<form>
+		<label class="answerOption">
+      <label class="pet t-rex">
+        <input type="radio" name="dino" value="t-rex"> T-Rex
+      </label>
+      <label class="pet stego">
+        <input type="radio" name="dino" value="stego"> Stegosaurus<br>
+      </label>
+      <label class="pet pteryl">
+        <input type="radio" name="dino" value="pteryl"> Pteryldactyl
+      <label class="pet bront">
+        <input type="radio" name="dino" value="bront"> Brontosaurus<br>
+      </label>
+    </label>
+      <button type="button">Go!</button>
+    </form>
+    <script src="create-pet.js"></script>
   </body>
 </html>
