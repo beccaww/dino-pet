@@ -18,3 +18,47 @@ describe("index page", function() {
       });
   });
 });
+
+describe("create-pet page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});
+
+describe("egg-pet page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});
+
+describe("pet page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});
+
+describe("delete-pet page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});
