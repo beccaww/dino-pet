@@ -15,9 +15,9 @@ function getPet (callbackFn) {
 function displayPet() {
     //displays the correct state of pet, whether egg or fully grown
     if (MOCK_PET.pet.state === "egg") {
-        //display egg page
+        $('body').append(`<section>Egg</section>`)
     } else if (MOCK_PET.pet.state === "pet") {
-        //display pet page 
+        $('body').append(`<section>Pet</section>`)
     }
 }
 
