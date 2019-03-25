@@ -1,10 +1,16 @@
 "use strict";
 
 const express = require("express");
-
 const app = express();
+mongoose.Promise = global.Promise;
 
 app.use(express.static("public"));
+
+const { PET } = require('./models');
+
+const app = express(); 
+
+app.use(express.json());
 
 
 app.post('/pets', (req, res) => {

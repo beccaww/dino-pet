@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+  background: #e3e6ff; 
+}
+
+h1 {
+  background-color: #328464;
+  color: white; 
+}
+
+form {
+  font-size: 24px; 
+}
+
+
+button {
+    padding: 20px;
+    border: none;
+    background-color: #328464;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 25px
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #ffffff;
+    transition: 0.2s all linear;
+    outline: none;
+    margin-right: 5px;
+    position: relative;
+    top: 2px;
+}
+
+input:checked {
+    border: 8px solid #5daf8d;
+}
+
+.pet {
+  padding: 20px; 
+}

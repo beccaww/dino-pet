@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Dino Pets</title>
-    <script
-          src="https://code.jquery.com/jquery-3.2.1.min.js"
-          integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-          crossorigin="anonymous"></script>
-    <link href="index.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
-    <p>Hello World</p>
+
+<head>
+	<title>Dino Pets</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	 crossorigin="anonymous">
+
+	</script>
+	<link href="index.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Rajdhani|Unica+One" rel="stylesheet">
+</head>
+
+<body>
+	<h1>Choose Your Pet</h1>
+	<form>
+		<label class="answerOption">
+      <label class="pet t-rex">
+        <input type="radio" value="t-rex" name="answer" required> Tyrannosaurus Rex<br>
+      </label>
+      <label class="pet stego">
+        <input type="radio" value="stego" name="answer" required> Stegosaurus<br>
+      </label>
+      <label class="pet pteryl">
+        <input type="radio" value="pteryl" name="answer" required> Pteryldactyl<br>
+      <label class="pet bront">
+        <input type="radio" value="bront" name="answer" required> Brontosaurus<br>
+      </label>
+    </label>
+      <button type="button">Go!</button>
+    </form>
     <script src="index.js"></script>
   </body>
 </html>
