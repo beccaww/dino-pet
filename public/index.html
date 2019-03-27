@@ -7,13 +7,14 @@
 	 crossorigin="anonymous">
 
 	</script>
-	<link href="index.css" rel="stylesheet" type="text/css" />
+  <link href="index.css" rel="stylesheet" type="text/css" />
+  <link href="grid.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Rajdhani|Unica+One" rel="stylesheet">
 </head>
 
 <body>
 	<h1>Choose Your Pet</h1>
-	<form>
+	<form action="/pets" method="post">
 		<label class="answerOption">
       <label class="pet t-rex">
         <input type="radio" value="t-rex" name="answer" required> Tyrannosaurus Rex<br>
@@ -27,7 +28,7 @@
         <input type="radio" value="bront" name="answer" required> Brontosaurus<br>
       </label>
     </label>
-      <button type="button">Go!</button>
+      <button type="submit" class="submit button" >Go!</button>
     </form>
     <script src="index.js"></script>
   </body>
