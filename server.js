@@ -58,22 +58,32 @@ app.post('/pets', jsonParser, (req, res) => {
 
 
 app.get('/pets/:id', (req, res) => {
-  console.log(`GET /pets/${req.params.id}`);
+  //console.log(`GET /pets/${req.params.id}`);
+  // const pet = {
+  //   id,
+  //   name: req.body.name,
+  //   state: req.body.state,
+  // };
   Pet
-  .find(pet.id)
+  .find()
   .then(pets => {
-    res.json(pets.map(pet => {
+    res.json({pets: pets.map(pet => {
       return {
         id: pet._id,
         name: pet.name,
         state: pet.state
       };
-    }));
+    })
+  });
+    console.log(pets.id)
+    console.log(pets.name);
+    console.log(pets.state);
   })
   .catch(err => {
     console.error(err);
     res.status(500).json({ error: 'something went terribly wrong' });
   });
+  console.log("hello world");
 });
 
 app.listen(8080);
