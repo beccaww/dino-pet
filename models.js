@@ -1,20 +1,28 @@
 'use strict';
 
 const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+//mongoose.Promise = global.Promise;
+
 
 
 var petSchema = mongoose.Schema({
-    name: 'string',
-    state: 'string',
-  });
+  name: 'string',
+  state: 'string',
+});
 
 
-var petInteractionSchema = mongoose.Schema({
-    
-})
+// var petInteractionSchema = mongoose.Schema({
 
-const PET = mongoose.model('PET', petSchema);
+// })
 
-module.exports = {PET};
-  
+petSchema.methods.serialize = function () {
+  return {
+    id: this._id,
+    name: this.name,
+    state: this.state
+  }
+};
+
+const Pet = mongoose.model('Pet', petSchema);
+
+module.exports = {Pet};
