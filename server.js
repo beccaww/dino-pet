@@ -1,12 +1,12 @@
 "use strict";
 
-const { DATABASE_URL, PORT } = require('./config');
+const {DATABASE_URL, PORT} = require('./config');
 
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
 //mongoose.Promise = global.Promise;
-const uuidv4 = require ('uuid/v4');
+const uuidv4 = require('uuid/v4');
 
 app.use(express.static("public"));
 const bodyParser = require('body-parser');
@@ -37,7 +37,7 @@ app.post('/pets', jsonParser, (req, res) => {
 
   Pet
     .create({
-      name: req.body.name, 
+      name: req.body.name,
       state: req.body.state
     })
     .then(pet => res.status(201).json({
@@ -51,16 +51,22 @@ app.post('/pets', jsonParser, (req, res) => {
         error: 'Something went wrong'
       });
     });
-    console.log("hello");  
-    console.log(pet.name);
-    console.log(pet.state);
-    return pet.id; 
+  console.log("hello");
+  console.log(pet.name);
+  console.log(pet.state);
+  return pet.id;
 });
 
 app.get('/pets/:id', (req, res) => {
   Pet
     .findById(req.params.id)
-    .then(pet => res.json(pet));
+    .then(pet => res.json(pet))
+    .catch(err => {
+      console.error(err);
+      res.status(404).json({
+        error: 'Id not found'
+      });
+    });
 });
 
 app.get('/pets', (req, res) => {
@@ -71,21 +77,24 @@ app.get('/pets', (req, res) => {
   //   state: req.body.state,
   // };
   Pet
-  .find()
-  .then(pets => {
-    res.json({pets: pets.map(pet => {
-      return {
-        id: pet._id,
-        name: pet.name,
-        state: pet.state
-      };
+    .find()
+    .then(pets => {
+      res.json({
+        pets: pets.map(pet => {
+          return {
+            id: pet._id,
+            name: pet.name,
+            state: pet.state
+          };
+        })
+      });
     })
-  });
-  })
-  .catch(err => {
-    console.error(err);
-    res.status(500).json({ error: 'something went terribly wrong' });
-  });
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'something went terribly wrong'
+      });
+    });
   console.log("hello world");
 });
 
@@ -98,9 +107,9 @@ function runServer(databaseUrl, port = PORT) {
         return reject(err);
       }
       server = app.listen(port, () => {
-        console.log(`Your app is listening on port ${port}`);
-        resolve();
-      })
+          console.log(`Your app is listening on port ${port}`);
+          resolve();
+        })
         .on('error', err => {
           mongoose.disconnect();
           reject(err);
@@ -131,5 +140,4 @@ if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
-module.exports = { runServer, app, closeServer };
-
+module.exports = {runServer, app, closeServer};
