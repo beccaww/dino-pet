@@ -30,7 +30,7 @@ button {
     margin-top: 25px
 }
 
-input {
+input[type="radio"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -51,4 +51,8 @@ input:checked {
 
 .pet {
   padding: 20px; 
+}
+
+label {
+  display: block;
 }
