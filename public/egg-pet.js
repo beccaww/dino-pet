@@ -35,7 +35,13 @@ function deleteButton() {
   
   }
   
+  function fetchPet() {
+    const petId = location.search.split('=')[1];
+    console.log('pet id', petId);
+  }
+
   function eggInteraction() {
+    fetchPet();
     $('.buttons').on('click', '.warm', warmButton);
     $('.buttons').on('click', '.talk', talkButton)
     $('.buttons').on('click', '.delete', deleteButton);
