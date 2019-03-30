@@ -1,5 +1,10 @@
 //controls the delete button
 function deleteButton() {
+    const petId = location.search.split('=')[1];
+    fetch(`/pets/${petId}`)
+    .then(res => res.json())
+    .then(json => console.log(json))
+    .catch(err => console.error(err));
     console.log("Deleting pet");
   }
   

@@ -98,6 +98,21 @@ app.get('/pets', (req, res) => {
   console.log("hello world");
 });
 
+app.delete('/pets/:id', (req, res) => {
+  Pet
+    .findByIdAndRemove(req.params.id)
+    .then(() => {
+      console.log(`Deleted pet with id: \`${req.params.id}\``);
+      res.status(204).end();
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({
+        error: 'something went terribly wrong'
+    });
+  });
+})
+
 let server;
 // this function connects to our database, then starts the server
 function runServer(databaseUrl, port = PORT) {
