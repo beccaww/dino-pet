@@ -1,33 +1,33 @@
-function chooseDino(){ 
-    if ($('input[type=radio]:checked').val() === 't-rex') {
-        displayTrex(); 
-      }
-      else if  ($('input[type=radio]:checked').val() === 'stego') {
-        displayStego(); 
-      }
-      else if  ($('input[type=radio]:checked').val() === 'pteryl') {
-        displayPteryl(); 
-      }
-      else if ($('input[type=radio]:checked').val() === 'bront'){
-        displayBront(); 
-      }
-}
+// function chooseDino(){ 
+//     if ($('input[type=radio]:checked').val() === 't-rex') {
+//         displayTrex(); 
+//       }
+//       else if  ($('input[type=radio]:checked').val() === 'stego') {
+//         displayStego(); 
+//       }
+//       else if  ($('input[type=radio]:checked').val() === 'pteryl') {
+//         displayPteryl(); 
+//       }
+//       else if ($('input[type=radio]:checked').val() === 'bront'){
+//         displayBront(); 
+//       }
+// }
 
-function displayTrex(){
-    console.log("T-rex"); 
-}
+// function displayTrex(){
+//     console.log("T-rex"); 
+// }
 
-function displayStego(){
-    console.log("Stego"); 
-}
+// function displayStego(){
+//     console.log("Stego"); 
+// }
 
-function displayPteryl(){
-    console.log("Pteryl"); 
-}
+// function displayPteryl(){
+//     console.log("Pteryl"); 
+// }
 
-function displayBront(){
-    console.log("Bront"); 
-}
+// function displayBront(){
+//     console.log("Bront"); 
+// }
 
 function fetchEgg(e) {
   e.preventDefault();
@@ -43,11 +43,15 @@ function fetchEgg(e) {
   })
   .then(res => res.json())
   .then(json => console.log(json))
-  .catch(err => console.error(err));
+  .catch(err => console.error(err)); 
+ 
+  window.location.replace("/pets.html");
+  return false;
 }
 
 function choosePet() {
   $('body').on('submit', 'form', fetchEgg);
+  
 }
 
 $(choosePet);

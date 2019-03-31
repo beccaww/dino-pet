@@ -13,6 +13,10 @@ function deleteButton() {
     })
     .catch(err => console.error(err));
   console.log("Deleting pet");
+
+  window.location.replace("/pets.html");
+  return false;
+
 }
 
 //controls the sleep button
