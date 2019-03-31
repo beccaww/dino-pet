@@ -31,6 +31,10 @@ function talkButton() {
   sentenceGeneratorTalk();
 }
 
+function hatchButton() { 
+  console.log("Hatching pet")
+}
+
 //generates the sentences
 function sentenceGeneratorWarm() {
   //console.log("I'm a sentence")
@@ -48,7 +52,13 @@ function sentenceGeneratorTalk() {
 
 //counts how many clicks happen
 function getClicks() {
+  var warm = document.getElementById("warm");
+  // var hatch = document.getElementById("hatch");
 
+  warm.onclick = function() {
+    $('#hatch').removeClass('hidden');
+
+}
 }
 
 function fetchPet() {
@@ -60,8 +70,9 @@ function eggInteraction() {
   fetchPet();
   $('.buttons').on('click', '.warm', warmButton);
   $('.buttons').on('click', '.talk', talkButton)
+  $('.buttons').on('click', '.hatch', hatchButton)
   $('.buttons').on('click', '.delete', deleteButton);
-
+  getClicks(); 
 }
 
 $(eggInteraction);

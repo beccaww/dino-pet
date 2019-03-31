@@ -98,6 +98,10 @@ app.get('/pets', (req, res) => {
   console.log("hello world");
 });
 
+app.put('/pets/:id', (req, res) => {
+  
+})
+
 app.delete('/pets/:id', (req, res) => {
   Pet
     .findByIdAndRemove(req.params.id)

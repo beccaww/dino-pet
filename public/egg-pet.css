@@ -40,4 +40,8 @@
   .hidden {
     display: none; 
   }
+
+  #hatch {
+    visibility: "hidden";
+}
   
