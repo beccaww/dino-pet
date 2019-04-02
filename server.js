@@ -99,8 +99,29 @@ app.get('/pets', (req, res) => {
 });
 
 app.put('/pets/:id', (req, res) => {
+  // if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+  //   res.status(400).json({
+  //     error: 'Request path id and request body id values must match'
+  //   });
+  // }
+
+  const updated = {};
+  const updateableFields = ['name', 'state'];
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      updated[field] = req.body[field];
+    }
+  });
   
-})
+  Pet
+  .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
+  .then(updatedPet => res.status(200).json({
+    id: updatedPet.id,
+    name: updatedPet.name,
+    state: updatedPet.state
+  }))
+  .catch(err => res.status(500).json({ message: err }));
+});
 
 app.delete('/pets/:id', (req, res) => {
   Pet

@@ -32,7 +32,22 @@ function talkButton() {
 }
 
 function hatchButton() { 
+  const petId = location.search.split('=')[1];
+  fetch(`/pets/${petId}`, {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: $('input.name:checked').val(),
+        state: 'pet'
+      })
+    })
+    .catch(err => console.error(err));
   console.log("Hatching pet")
+
+  window.location.replace("/pet.html");
+  return false;
 }
 
 //generates the sentences
