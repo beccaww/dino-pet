@@ -1,47 +1,48 @@
-*{
-    box-sizing: border-box;
-    font-family: 'Rajdhani', sans-serif;
-    /*font-family: 'Unica One', cursive;*/
-  }
-  
-  body {
-    position: relative; 
-    background: #e3e6ff;
-  }
-  
-  h1{ 
-    background-color: #328464;
-    color: white; 
-  }
-  
-  .image {
-    margin: auto; 
-  }
-  
-  .button {
-    display: inline-block; 
-    padding: 20px;
-    border: none;
-    background-color: #328464;
-    color: white;
-    font-size: 18px;
-    text-transform: uppercase;
-    border-radius: 0;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 25px
-  }
-  
-  .delete {
-    background-color: #73172d;
-  }
-  
-  
-  .hidden {
-    display: none; 
-  }
-
-  #hatch {
-    visibility: "hidden";
+* {
+  box-sizing: border-box;
+  font-family: 'Rajdhani', sans-serif;
+  /*font-family: 'Unica One', cursive;*/
 }
-  
+
+body {
+  position: relative;
+  background: #e3e6ff;
+}
+
+h1 {
+  background-color: #328464;
+  color: white;
+}
+
+.image {
+  margin-left: 135px;
+}
+
+.button {
+  display: inline-block;
+  padding: 20px;
+  border: none;
+  background-color: #328464;
+  color: white;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 25px;
+  margin-left: 50px;
+}
+
+.delete {
+  background-color: #73172d;
+}
+
+
+.sentence {
+  margin-left: 50px;
+  margin-top: 25px;
+}
+
+.hidden {
+  display: none;
+}
