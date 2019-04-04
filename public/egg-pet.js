@@ -1,3 +1,7 @@
+const DATA = {
+  pet: null,
+};
+
 function backButton() {
   window.location.replace("/pets.html");
 }
@@ -18,28 +22,25 @@ function deleteButton() {
 //controls the sleep button
 function warmButton() {
   console.log("Warming pet");
-  sentenceGeneratorWarm();
+  sentenceGenerator(WARM);
   getClicks();
 }
 
 //controls the play button
 function talkButton() {
-  console.log("Talking to pet");
-  sentenceGeneratorTalk();
+  sentenceGenerator(TALK);
 }
 
-function sleepButton(){
-  console.log("Sleeping pet"); 
-  sentenceGeneratorSleep(); 
+function sleepButton() {
+  sentenceGenerator(SENTENCES[DATA.pet.name].sleep);
 }
 
-function playButton(){
-  console.log("Playing pet");
-  sentenceGeneratorPlay();
+function playButton() {
+  sentenceGenerator(SENTENCES[DATA.pet.name].play);
 }
 
-function feedButton(){
-  console.log("Feeding pet");
+function feedButton() {
+  sentenceGenerator(SENTENCES[DATA.pet.name].feed);
 }
 
 function hatchButton() {
@@ -60,36 +61,11 @@ function hatchButton() {
 }
 
 //generates the sentences
-function sentenceGeneratorWarm() {
-  //console.log("I'm a sentence")
+function sentenceGenerator(sentences) {
   $(".sentence").empty();
-  let randomNumber = Math.floor(Math.random() * WARM.length);
-  document.getElementById("sentence-display").innerHTML = WARM[randomNumber];
+  let randomNumber = Math.floor(Math.random() * sentences.length);
+  document.getElementById("sentence-display").innerHTML = sentences[randomNumber];
 }
-
-function sentenceGeneratorTalk() {
-  //console.log("I'm a sentence")
-  $(".sentence").empty();
-  let randomNumber = Math.floor(Math.random() * TALK.length);
-  document.getElementById("sentence-display").innerHTML = TALK[randomNumber];
-}
-
-function sentenceGeneratorSleep(){ 
-$(".sentence").empty();
-let randomNumber = Math.floor(Math.random() * STEGO[0].sleep.length);
-  document.getElementById("sentence-display").innerHTML = TALK[randomNumber];
-}
-
-function sentenceGeneratorPlay(){ 
-  $(".sentence").empty();
-let randomNumber = Math.floor(Math.random() * TREX[0].play.length);
-  document.getElementById("sentence-display").innerHTML = TALK[randomNumber];
-}
-
-function sentenceGeneratorFeed(){ 
-  
-}
-
 
 //counts how many clicks happen
 function getClicks() {
@@ -102,8 +78,8 @@ function getClicks() {
 }
 
 function displayPet(pet) {
-  let src = '/dinoegg.png';
-  if (pet.state === 'pet') {
+  let src = "/dinoegg.png";
+  if (pet.state === "pet") {
     src = `/dino-${pet.name.toLowerCase()}.png`;
   }
   return `
@@ -111,28 +87,28 @@ function displayPet(pet) {
   `;
 }
 
-function displayName(pet){
-  let name = 'Egg'; 
-  if (pet.state === 'pet') {
-    name = `${pet.name}`; 
-  };
-  return `${name}`
+function displayName(pet) {
+  let name = "Egg";
+  if (pet.state === "pet") {
+    name = `${pet.name}`;
+  }
+  return `${name}`;
 }
 
 function displayButtons(pet) {
-  let html; 
-  if (pet.state === 'egg') {
+  let html;
+  if (pet.state === "egg") {
     html = `<button id="warm" class="warm button" type="button">Warm up</button>
     <button class="talk button" type="button">Talk to</button>
     <button id="hatch" class="hidden hatch button" type="button">Hatch</button>
-    <button class="delete button" type="button">Delete</button>`
+    <button class="delete button" type="button">Delete</button>`;
   } else {
     html = `<button class="sleep button" type="button">Sleep</button>
     <button class="play button" type="button">Play</button>
     <button class="feed button" type="button">Feed</button>
-    <button class="delete button" type="button">Delete</button>`
-  };
-  return html; 
+    <button class="delete button" type="button">Delete</button>`;
+  }
+  return html;
 }
 
 function fetchPet() {
@@ -140,26 +116,28 @@ function fetchPet() {
   fetch(`/pets/${petId}`)
     .then(res => res.json())
     .then(pet => {
-      $('.Name').html(''); 
-      $('.Name').append(displayName(pet));
-      $('.pet.image').html('');
-      $('.pet.image').append(displayPet(pet));
-      $('.buttons').html('');
-      $('.buttons').append(displayButtons(pet)); 
+      $(".Name").html(displayName(pet));
+      $(".pet.image").html(displayPet(pet));
+      $(".buttons").html(displayButtons(pet));
+      DATA.pet = pet;
     })
     .catch(e => console.error(e));
 }
 
-function eggInteraction() {
-  fetchPet();
-  $(".back-button").on("click", ".back", backButton); 
+function listen() {
   $(".buttons").on("click", ".warm", warmButton);
   $(".buttons").on("click", ".talk", talkButton);
+  $(".buttons").on("click", ".sleep", sleepButton);
+  $(".buttons").on("click", ".feed", feedButton);
+  $(".buttons").on("click", ".play", playButton);
   $(".buttons").on("click", ".hatch", hatchButton);
   $(".buttons").on("click", ".delete", deleteButton);
-  $(".buttons").on("click", ".sleep",  sleepButton);
-  $(".buttons").on("click", ".play",  playButton);
-  $(".buttons").on("click", ".feed",  feedButton);
+  $(".back-button").on("click", ".back", backButton);
+}
+
+function eggInteraction() {
+  fetchPet();
+  listen();
 }
 
 $(eggInteraction);
