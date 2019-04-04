@@ -31,7 +31,7 @@ function talkButton() {
   sentenceGeneratorTalk();
 }
 
-function hatchButton() { 
+function hatchButton() {
   const petId = location.search.split('=')[1];
   fetch(`/pets/${petId}`, {
       method: 'PUT',
@@ -70,10 +70,14 @@ function getClicks() {
   var warm = document.getElementById("warm");
   // var hatch = document.getElementById("hatch");
 
-  warm.onclick = function() {
+  warm.onclick = function () {
     $('#hatch').removeClass('hidden');
 
+  }
 }
+
+function displayPet(){ 
+  
 }
 
 function fetchPet() {
@@ -87,7 +91,7 @@ function eggInteraction() {
   $('.buttons').on('click', '.talk', talkButton)
   $('.buttons').on('click', '.hatch', hatchButton)
   $('.buttons').on('click', '.delete', deleteButton);
-  getClicks(); 
+  getClicks();
 }
 
 $(eggInteraction);
