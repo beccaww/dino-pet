@@ -6,7 +6,7 @@ const TALK = [
 ];
 
 const SENTENCES = {
-  "T-rex": {
+  TRex: {
     sleep: [
       "T-Rex fell over and slept.",
       "T-Rex curled up at your feet and slept."
