@@ -35,11 +35,8 @@ function deletePet(e) {
   console.log("Deleting pet");
 }
 
-function initPets() {
-  // fetch all the pets 
+function initPets() { 
   fetchPets();
-  
-  // set up click events so that you can delete or navigate to a pet
   $('body').on('submit', 'form', deletePet);
 }
 
