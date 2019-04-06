@@ -1,84 +1,182 @@
-// "use strict";
+"use strict";
 
-// const chai = require("chai");
-// const chaiHttp = require("chai-http");
-// const faker = require('faker');
-// const mongoose = require('mongoose'); 
-// //const app = require("../server.js");
+const chai = require("chai");
+const chaiHttp = require("chai-http");
+const faker = require('faker');
+const mongoose = require('mongoose'); 
+//const app = require("../server.js");
 
-// const should = chai.should(); 
-// const expect = chai.expect;
+const should = chai.should(); 
+const expect = chai.expect;
 
-// const {Pet} = require('../models');
-// const { closeServer, runServer, app } = require('../server');
-// const { TEST_DATABASE_URL } = require('../config');
-
-
-// chai.use(chaiHttp);
-
-// function tearDownDb() {
-//   return new Promise((resolve, reject) => {
-//     console.warn('Deleting database');
-//     mongoose.connection.dropDatabase()
-//       .then(result => resolve(result))
-//       .catch(err => reject(err));
-//   });
-// }
-
-// function seedPetData() {
-//   console.info('seeding pet data');
-//   const seedData = [];
-//   for (let i = 1; i <= 10; i++) {
-//     seedData.push({
-//       name: faker.name.firstName(),
-//       state: 'egg',
-//     });
-//   }
-//   // this will return a promise
-//   return Pet.insertMany(seedData);
-// }
+const {Pet} = require('../models');
+const { closeServer, runServer, app } = require('../server');
+const { TEST_DATABASE_URL } = require('../config');
 
 
+chai.use(chaiHttp);
 
-// describe('pets API resource', function () {
+function tearDownDb() {
+  return new Promise((resolve, reject) => {
+    console.warn('Deleting database');
+    mongoose.connection.dropDatabase()
+      .then(result => resolve(result))
+      .catch(err => reject(err));
+  });
+}
 
-//   before(function () {
-//     return runServer(TEST_DATABASE_URL);
-//   });
-
-//   beforeEach(function () {
-//     return seedPetData();
-//   });
-
-//   afterEach(function () {
-//     // tear down database so we ensure no state from this test
-//     // effects any coming after.
-//     return tearDownDb();
-//   });
-
-//   after(function () {
-//     return closeServer();
-//   });
+function seedPetData() {
+  console.info('seeding pet data');
+  const seedData = [];
+  for (let i = 1; i <= 10; i++) {
+    seedData.push({
+      name: faker.name.firstName(),
+      state: 'egg',
+    });
+  }
+  return Pet.insertMany(seedData);
+}
 
 
-//   describe('GET endpoint', function () {
 
-//     it('should return all existing posts', function () {
-//       let res;
-//       return chai.request(app)
-//         .get('/pets')
-//         .then(_res => {
-//           res = _res;
-//           res.should.have.status(200);
-//           res.body.should.have.lengthOf.at.least(1);
+describe('pets API resource', function () {
 
-//           return Pet.count();
-//         })
-//         .then(count => {
-//           res.body.should.have.lengthOf(count);
-//         });
-//     });
-//   });
+  before(function () {
+    return runServer(TEST_DATABASE_URL);
+  });
+
+  beforeEach(function () {
+    return seedPetData();
+  });
+
+  afterEach(function () {
+    return tearDownDb();
+  });
+
+  after(function () {
+    return closeServer();
+  });
+
+
+  describe('GET endpoint', function () {
+
+    it('should return all existing pets', function () {
+      let res;
+      return chai.request(app)
+        .get('/pets')
+        .then(_res => {
+          res = _res;
+          res.should.have.status(200);
+
+          return Pet.count();
+        })
+    });
+ 
+    it('should return pets with right fields', function () {
+  
+        let resPet;
+        return chai.request(app)
+          .get('/pets')
+          .then(function (res) {
+  
+            res.should.have.status(200);
+            res.should.be.json;
+            res.body.should.be.a('object');
+  
+            res.body.forEach(function (pet) {
+              pet.should.be.a('object');
+              pet.should.include.keys('id', 'name', 'state');
+            });
+            resPet = res.body[0];
+            return Pet.findById(resPet.id);
+          })
+          .then(pet => {
+            resPet.name.should.equal(pet.name);
+            resPet.state.should.equal(pet.state);
+          });
+      });
+    });
+  
+    describe('POST endpoint', function () {
+
+      it('should add a new pet', function () {
+  
+        const newPet = {
+          name: faker.name.firstName(),
+          state: 'egg'
+        };
+  
+        return chai.request(app)
+          .post('/pets')
+          .send(newPet)
+          .then(function (res) {
+            res.should.have.status(201);
+            res.should.be.json;
+            res.body.should.be.a('object');
+            res.body.should.include.keys(
+              'id', 'name', 'state');
+            res.body.name.should.equal(newPet.name);
+            res.body.id.should.not.be.null;
+            res.body.state.should.equal(newPet.state);
+            return Pet.findById(res.body.id);
+          })
+          .then(function (pet) {
+            pet.name.should.equal(newPet.name);
+            pet.state.should.equal(newPet.state);
+          });
+      });
+    });
+  
+    describe('PUT endpoint', function () {
+  
+      it('should update fields you send over', function () {
+        const updateData = {
+          name: 'name',
+          state: 'pet',
+        };
+  
+        return Pet
+          .findOne()
+          .then(pet => {
+            updateData.id = pet.id;
+
+            return chai.request(app)
+              .put(`/pets/${pet.id}`)
+              .send(updateData);
+          })
+          .then(res => {
+            res.should.have.status(204);
+            return Pet.findById(updateData.id);
+          })
+          .then(pet => {
+            pet.name.should.equal(updateData.name);
+            pet.state.should.equal(updateData.state);
+          });
+      });
+    });
+  
+    describe('DELETE endpoint', function () {
+
+      it('should delete a pet by id', function () {
+  
+        let pet;
+  
+        return Pet
+          .findOne()
+          .then(_pet => {
+            pet = _pet;
+            return chai.request(app).delete(`/pets/${pet.id}`);
+          })
+          .then(res => {
+            res.should.have.status(204);
+            return Pet.findById(pet.id);
+          })
+          .then(_pet => {
+            should.not.exist(_pet);
+          });
+      });
+    });
+  });
 
 
 

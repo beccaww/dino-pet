@@ -6,7 +6,7 @@ function backButton() {
   window.location.replace("/pets.html");
 }
 
-//controls the delete button
+
 function deleteButton() {
   const petId = location.search.split("=")[1];
   fetch(`/pets/${petId}`, {
@@ -19,14 +19,12 @@ function deleteButton() {
   console.log("Deleting pet");
 }
 
-//controls the sleep button
 function warmButton() {
   console.log("Warming pet");
   sentenceGenerator(WARM);
   getClicks();
 }
 
-//controls the play button
 function talkButton() {
   sentenceGenerator(TALK);
 }
@@ -60,17 +58,16 @@ function hatchButton() {
   console.log("Hatching pet");
 }
 
-//generates the sentences
+
 function sentenceGenerator(sentences) {
   $(".sentence").empty();
   let randomNumber = Math.floor(Math.random() * sentences.length);
   document.getElementById("sentence-display").innerHTML = sentences[randomNumber];
 }
 
-//counts how many clicks happen
+
 function getClicks() {
   var warm = document.getElementById("warm");
-  // var hatch = document.getElementById("hatch");
 
   warm.onclick = function() {
     $("#hatch").removeClass("hidden");
