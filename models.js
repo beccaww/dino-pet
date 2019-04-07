@@ -1,7 +1,6 @@
 'use strict';
 
 const mongoose = require('mongoose');
-//mongoose.Promise = global.Promise;
 
 
 
@@ -10,10 +9,6 @@ var petSchema = mongoose.Schema({
   state: 'string',
 });
 
-
-// var petInteractionSchema = mongoose.Schema({
-
-// })
 
 petSchema.methods.serialize = function () {
   return {

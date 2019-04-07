@@ -1,24 +1,22 @@
 "use strict";
 
-const {DATABASE_URL, PORT} = require('./config');
+const { DATABASE_URL, PORT } = require('./config');
 
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-//mongoose.Promise = global.Promise;
 const uuidv4 = require('uuid/v4');
 
 app.use(express.static("public"));
 const bodyParser = require('body-parser');
 
-const {Pet} = require('./models');
+const { Pet } = require('./models');
 
 const jsonParser = bodyParser.json();
 app.use(express.json());
 
 
 app.post('/pets', jsonParser, (req, res) => {
-  //console.log('POST /pets');
   const requiredFields = ['name', 'state'];
   requiredFields.forEach(field => {
     if (!(field in req.body)) {
@@ -70,12 +68,6 @@ app.get('/pets/:id', (req, res) => {
 });
 
 app.get('/pets', (req, res) => {
-  //console.log(`GET /pets/${req.params.id}`);
-  // const pet = {
-  //   id,
-  //   name: req.body.name,
-  //   state: req.body.state,
-  // };
   Pet
     .find()
     .then(pets => {
@@ -99,12 +91,6 @@ app.get('/pets', (req, res) => {
 });
 
 app.put('/pets/:id', (req, res) => {
-  // if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-  //   res.status(400).json({
-  //     error: 'Request path id and request body id values must match'
-  //   });
-  // }
-
   const updated = {};
   const updateableFields = ['name', 'state'];
   updateableFields.forEach(field => {
@@ -112,15 +98,21 @@ app.put('/pets/:id', (req, res) => {
       updated[field] = req.body[field];
     }
   });
-  
+
   Pet
-  .findByIdAndUpdate(req.params.id, { $set: updated }, { new: true })
-  .then(updatedPet => res.status(200).json({
-    id: updatedPet.id,
-    name: updatedPet.name,
-    state: updatedPet.state
-  }))
-  .catch(err => res.status(500).json({ message: err }));
+    .findByIdAndUpdate(req.params.id, {
+      $set: updated
+    }, {
+      new: true
+    })
+    .then(updatedPet => res.status(200).json({
+      id: updatedPet.id,
+      name: updatedPet.name,
+      state: updatedPet.state
+    }))
+    .catch(err => res.status(500).json({
+      message: err
+    }));
 });
 
 app.delete('/pets/:id', (req, res) => {
@@ -134,12 +126,12 @@ app.delete('/pets/:id', (req, res) => {
       console.error(err);
       res.status(500).json({
         error: 'something went terribly wrong'
+      });
     });
-  });
 })
 
 let server;
-// this function connects to our database, then starts the server
+
 function runServer(databaseUrl, port = PORT) {
   return new Promise((resolve, reject) => {
     mongoose.connect(databaseUrl, err => {
@@ -158,8 +150,7 @@ function runServer(databaseUrl, port = PORT) {
   });
 }
 
-// this function closes the server, and returns a promise. we'll
-// use it in our integration tests later.
+
 function closeServer() {
   return mongoose.disconnect().then(() => {
     return new Promise((resolve, reject) => {
@@ -174,10 +165,9 @@ function closeServer() {
   });
 }
 
-// if server.js is called directly (aka, with `node server.js`), this block
-// runs. but we also export the runServer command so other code (for instance, test code) can start the server as needed.
+
 if (require.main === module) {
   runServer(DATABASE_URL).catch(err => console.error(err));
 }
 
-module.exports = {runServer, app, closeServer};
+module.exports = { runServer, app, closeServer };

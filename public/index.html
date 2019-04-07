@@ -1,34 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+	<meta name="description" content="Make a dino-pet! Raise it from an egg and watch it hatch!">
 	<title>Dino Pets</title>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-	 crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
 
 	</script>
-  <link href="index.css" rel="stylesheet" type="text/css" />
-  <link href="grid.css" rel="stylesheet" type="text/css" />
-  <link href="https://fonts.googleapis.com/css?family=Rajdhani|Unica+One" rel="stylesheet">
+	<link href="index.css" rel="stylesheet" type="text/css" />
+	<link href="grid.css" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Rajdhani|Unica+One" rel="stylesheet">
 </head>
 
 <body>
-	<header class="col-12"><h1>Choose Your Pet</h1></header>
+	<header role="banner" class="col-12">
+		<h1>Choose Your Pet</h1>
+	</header>
 	<form class="col-6 dino-form" action="/pets" method="post">
-	  <label>
-            <input type="radio" class="name" value="TRex" name="name"> Tyrannosaurus Rex
-	  </label>
-	  <label>
-            <input type="radio" class="name" value="Stego" name="name" required> Stegosaurus<br>
-	  </label>
-	  <label>
-            <input type="radio" class="name" value="Pteryl" name="name" required> Pteryldactyl<br>
-	  </label>
-	  <label>
-            <input type="radio" class="name" value="Bront" name="name" required> Brontosaurus<br>
-	  </label>
-          <button type="submit" class="submit button" >Go!</button>
-				</form>
-    <script src="index.js"></script>
-  </body>
+		<label>
+			<input type="radio" class="name" value="TRex" name="name"> Tyrannosaurus Rex
+		</label>
+		<label>
+			<input type="radio" class="name" value="Stego" name="name" required> Stegosaurus<br>
+		</label>
+		<label>
+			<input type="radio" class="name" value="Pteryl" name="name" required> Pteryldactyl<br>
+		</label>
+		<label>
+			<input type="radio" class="name" value="Bront" name="name" required> Brontosaurus<br>
+		</label>
+		<button type="submit" class="submit button">Go!</button>
+	</form>
+	<script src="index.js"></script>
+</body>
+
 </html>

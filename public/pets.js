@@ -9,7 +9,7 @@ function fetchPets() {
 
 function displayPet(pet) {
   return `
-  <div>
+  <section>
     <form class="individual-pet-form">
       <h3>
         <a href="/egg-pet.html?pet=${pet.id}">${pet.name}</a>
@@ -17,7 +17,7 @@ function displayPet(pet) {
       <input class="pet-id" type="hidden" value="${pet.id}" />
       <button type="submit" class="delete button" >Delete</button>
     </form>
-  </div>`;
+  </section>`;
 }
 
 function deletePet(e) {
@@ -35,10 +35,9 @@ function deletePet(e) {
   console.log("Deleting pet");
 }
 
-function initPets() { 
+function initPets() {
   fetchPets();
   $('body').on('submit', 'form', deletePet);
 }
 
 $(initPets);
-

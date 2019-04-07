@@ -10,8 +10,8 @@ function backButton() {
 function deleteButton() {
   const petId = location.search.split("=")[1];
   fetch(`/pets/${petId}`, {
-    method: "DELETE"
-  })
+      method: "DELETE"
+    })
     .then(() => {
       window.location.replace("/pets.html");
     })
@@ -44,15 +44,15 @@ function feedButton() {
 function hatchButton() {
   const petId = location.search.split("=")[1];
   fetch(`/pets/${petId}`, {
-    method: "PUT",
-    headers: {
-      "content-type": "application/json"
-    },
-    body: JSON.stringify({
-      name: $("input.name:checked").val(),
-      state: "pet"
+      method: "PUT",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        name: $("input.name:checked").val(),
+        state: "pet"
+      })
     })
-  })
     .then(fetchPet)
     .catch(err => console.error(err));
   console.log("Hatching pet");
@@ -69,7 +69,7 @@ function sentenceGenerator(sentences) {
 function getClicks() {
   var warm = document.getElementById("warm");
 
-  warm.onclick = function() {
+  warm.onclick = function () {
     $("#hatch").removeClass("hidden");
   };
 }
