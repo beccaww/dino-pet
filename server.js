@@ -39,7 +39,7 @@ app.post('/pets', jsonParser, (req, res) => {
       state: req.body.state
     })
     .then(pet => res.status(201).json({
-      _id: pet.id,
+      id: pet.id,
       name: pet.name,
       state: pet.state
     }))

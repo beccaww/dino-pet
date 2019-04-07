@@ -82,11 +82,11 @@ describe('pets API resource', function () {
             res.should.be.json;
             res.body.should.be.a('object');
 
-            res.body.forEach(function (pet) {
+            res.body.pets.forEach(function (pet) {
               pet.should.be.a('object');
               pet.should.include.keys('id', 'name', 'state');
             });
-            resPet = res.body[0];
+            resPet = res.body.pets[0];
             return Pet.findById(resPet.id);
           })
           .then(pet => {
@@ -144,7 +144,7 @@ describe('pets API resource', function () {
               .send(updateData);
           })
           .then(res => {
-            res.should.have.status(204);
+            res.should.have.status(200);
             return Pet.findById(updateData.id);
           })
           .then(pet => {
