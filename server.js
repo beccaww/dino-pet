@@ -5,7 +5,6 @@ const { DATABASE_URL, PORT } = require('./config');
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-const uuidv4 = require('uuid/v4');
 
 app.use(express.static("public"));
 const bodyParser = require('body-parser');
@@ -26,12 +25,6 @@ app.post('/pets', jsonParser, (req, res) => {
     }
   });
 
-  const id = uuidv4();
-  const pet = {
-    id,
-    name: req.body.name,
-    state: req.body.state,
-  };
 
   Pet
     .create({
@@ -49,10 +42,6 @@ app.post('/pets', jsonParser, (req, res) => {
         error: 'Something went wrong'
       });
     });
-  console.log("hello");
-  console.log(pet.name);
-  console.log(pet.state);
-  return pet.id;
 });
 
 app.get('/pets/:id', (req, res) => {
@@ -87,7 +76,6 @@ app.get('/pets', (req, res) => {
         error: 'something went terribly wrong'
       });
     });
-  console.log("hello world");
 });
 
 app.put('/pets/:id', (req, res) => {
