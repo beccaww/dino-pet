@@ -10,7 +10,7 @@ function fetchPets() {
 function displayPet(pet) {
   return `
   <div>
-    <form>
+    <form class="individual-pet-form">
       <h3>
         <a href="/egg-pet.html?pet=${pet.id}">${pet.name}</a>
       </h3>

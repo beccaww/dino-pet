@@ -82,7 +82,7 @@ describe('pets API resource', function () {
             res.should.have.status(200);
             res.should.be.json;
             res.body.should.be.a('object');
-  
+
             res.body.forEach(function (pet) {
               pet.should.be.a('object');
               pet.should.include.keys('id', 'name', 'state');
@@ -182,57 +182,35 @@ describe('pets API resource', function () {
 
 
 
-// describe("index page", function() {
-//   it("should exist", function() {
-//     return chai
-//       .request(app)
-//       .get("/")
-//       .then(function(res) {
-//         expect(res).to.have.status(200);
-//       });
-//   });
-// });
+describe("index page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});
 
-// describe("create-pet page", function() {
-//   it("should exist", function() {
-//     return chai
-//       .request(app)
-//       .get("/")
-//       .then(function(res) {
-//         expect(res).to.have.status(200);
-//       });
-//   });
-// });
+describe("egg-pet page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/egg-pet.html")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});
 
-// describe("egg-pet page", function() {
-//   it("should exist", function() {
-//     return chai
-//       .request(app)
-//       .get("/")
-//       .then(function(res) {
-//         expect(res).to.have.status(200);
-//       });
-//   });
-// });
-
-// describe("pet page", function() {
-//   it("should exist", function() {
-//     return chai
-//       .request(app)
-//       .get("/")
-//       .then(function(res) {
-//         expect(res).to.have.status(200);
-//       });
-//   });
-// });
-
-// describe("delete-pet page", function() {
-//   it("should exist", function() {
-//     return chai
-//       .request(app)
-//       .get("/")
-//       .then(function(res) {
-//         expect(res).to.have.status(200);
-//       });
-//   });
-// });
+describe("pets page", function() {
+  it("should exist", function() {
+    return chai
+      .request(app)
+      .get("/pets.html")
+      .then(function(res) {
+        expect(res).to.have.status(200);
+      });
+  });
+});

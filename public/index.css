@@ -21,6 +21,20 @@ h3 {
   margin-left: 50px;
 }
 
+.dino-form{
+  padding: 20px; 
+}
+
+.create-another-pet {
+  margin-top: 20px;
+}
+
+.individual-pet-form{ 
+  border: 2px dotted #328464;
+  border-radius: 5px; 
+  width: 200px; 
+}
+
 .image {
   margin-left: 135px;
 }

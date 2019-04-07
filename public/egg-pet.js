@@ -65,7 +65,7 @@ function sentenceGenerator(sentences) {
   document.getElementById("sentence-display").innerHTML = sentences[randomNumber];
 }
 
-
+//controls when the hatch button becomes visible
 function getClicks() {
   var warm = document.getElementById("warm");
 
