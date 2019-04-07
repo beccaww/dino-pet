@@ -31,11 +31,7 @@ app.post('/pets', jsonParser, (req, res) => {
       name: req.body.name,
       state: req.body.state
     })
-    .then(pet => res.status(201).json({
-      id: pet.id,
-      name: pet.name,
-      state: pet.state
-    }))
+    .then(pet => res.status(201).json(pet.serialize()))
     .catch(err => {
       console.error(err);
       res.status(500).json({
@@ -61,13 +57,7 @@ app.get('/pets', (req, res) => {
     .find()
     .then(pets => {
       res.json({
-        pets: pets.map(pet => {
-          return {
-            id: pet._id,
-            name: pet.name,
-            state: pet.state
-          };
-        })
+        pets: pets.map(pet => pet.serialize())
       });
     })
     .catch(err => {
@@ -93,11 +83,7 @@ app.put('/pets/:id', (req, res) => {
     }, {
       new: true
     })
-    .then(updatedPet => res.status(200).json({
-      id: updatedPet.id,
-      name: updatedPet.name,
-      state: updatedPet.state
-    }))
+    .then(pet => res.status(200).json(pet.serialize()))
     .catch(err => res.status(500).json({
       message: err
     }));
