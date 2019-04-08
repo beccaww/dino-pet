@@ -9,4 +9,3 @@ Technologies used: HTML, CSS, JavaScript, jQuery, Node.js
 
 Screenshots:
 
-![Image of Dino-pets page](Screenshot_Dino Pets.png)
