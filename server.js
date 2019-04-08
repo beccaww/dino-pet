@@ -5,7 +5,6 @@ const { DATABASE_URL, PORT } = require('./config');
 const express = require("express");
 const app = express();
 const mongoose = require('mongoose');
-const uuidv4 = require('uuid/v4');
 
 app.use(express.static("public"));
 const bodyParser = require('body-parser');
@@ -26,33 +25,19 @@ app.post('/pets', jsonParser, (req, res) => {
     }
   });
 
-  const id = uuidv4();
-  const pet = {
-    id,
-    name: req.body.name,
-    state: req.body.state,
-  };
 
   Pet
     .create({
       name: req.body.name,
       state: req.body.state
     })
-    .then(pet => res.status(201).json({
-      _id: pet.id,
-      name: pet.name,
-      state: pet.state
-    }))
+    .then(pet => res.status(201).json(pet.serialize()))
     .catch(err => {
       console.error(err);
       res.status(500).json({
         error: 'Something went wrong'
       });
     });
-  console.log("hello");
-  console.log(pet.name);
-  console.log(pet.state);
-  return pet.id;
 });
 
 app.get('/pets/:id', (req, res) => {
@@ -72,13 +57,7 @@ app.get('/pets', (req, res) => {
     .find()
     .then(pets => {
       res.json({
-        pets: pets.map(pet => {
-          return {
-            id: pet._id,
-            name: pet.name,
-            state: pet.state
-          };
-        })
+        pets: pets.map(pet => pet.serialize())
       });
     })
     .catch(err => {
@@ -87,7 +66,6 @@ app.get('/pets', (req, res) => {
         error: 'something went terribly wrong'
       });
     });
-  console.log("hello world");
 });
 
 app.put('/pets/:id', (req, res) => {
@@ -105,11 +83,7 @@ app.put('/pets/:id', (req, res) => {
     }, {
       new: true
     })
-    .then(updatedPet => res.status(200).json({
-      id: updatedPet.id,
-      name: updatedPet.name,
-      state: updatedPet.state
-    }))
+    .then(pet => res.status(200).json(pet.serialize()))
     .catch(err => res.status(500).json({
       message: err
     }));
