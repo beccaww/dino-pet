@@ -1,6 +1,6 @@
 # Dino-pets
 
-Link: 
+Link: https://beccaww.github.io/dino-pet/public/index.html
 
 Summary: Dino-pet is a virtual pet with dinosaurs. Create a dinosaur and raise it from an egg into a full grown dinosaur. Interact with
 the egg and the full grown dinosaur through buttons on your screen. 
