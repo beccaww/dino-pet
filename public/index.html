@@ -2,37 +2,30 @@
 <html lang="en">
 
 <head>
-	<meta name="description" content="Make a dino-pet! Raise it from an egg and watch it hatch!">
-	<title>Dino Pets</title>
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    <meta name="description" content="Make a dino-pet! Raise it from an egg and watch it hatch!">
+    <title>Dino Pets</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
 
-	</script>
-	<link href="index.css" rel="stylesheet" type="text/css" />
-	<link href="grid.css" rel="stylesheet" type="text/css" />
-	<link href="https://fonts.googleapis.com/css?family=Rajdhani|Unica+One" rel="stylesheet">
+    </script>
+    <link href="index.css" rel="stylesheet" type="text/css" />
+    <link href="grid.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani|Unica+One" rel="stylesheet">
 </head>
 
 <body>
-	<header role="banner" class="col-12">
-		<h1>Choose Your Pet</h1>
-	</header>
-	<form class="col-6 dino-form" action="/pets" method="post">
-		<label>
-			<input type="radio" class="name" value="TRex" name="name"> Tyrannosaurus Rex
-		</label>
-		<label>
-			<input type="radio" class="name" value="Stego" name="name" required> Stegosaurus<br>
-		</label>
-		<label>
-			<input type="radio" class="name" value="Pteryl" name="name" required> Pteryldactyl<br>
-		</label>
-		<label>
-			<input type="radio" class="name" value="Bront" name="name" required> Brontosaurus<br>
-		</label>
-		<button type="submit" class="submit button">Go!</button>
-	</form>
-	<script src="index.js"></script>
+    <header role="banner" class="col-12">
+        <h1>Dino-Pet</h1>
+    </header>
+    <section class="col-12 welcome">Welcome to Dino-Pet! Dino-Pet is a virtual pet with dinosaurs. Raise your dino from an egg to a full grown
+        dino. <br>
+        If you're new here, click the create a pet link to get started. If you want to visit an existing pet, click the
+        view a pet link.
+    </section>
+    <h2 class="col-6">Create a pet: </h2>
+    <a class="col-6 create-pet" href="/create-pet.html">Here!</a>
+    <h2 class="col-6">View a pet: </h2>
+    <a class="col-6 view-pet" href="/pets.html">Here!</a>
 </body>
 
 </html>

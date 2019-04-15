@@ -17,8 +17,24 @@ h1 {
   margin-left: 25px;
 }
 
+h2 {
+  margin-left: 50px; 
+  color: #328464; 
+}
+
 h3 {
   margin-left: 50px;
+}
+
+.create-pet, .view-pet {
+  margin-left: 50px; 
+}
+
+.welcome {
+  padding: 20px;
+  margin-top: 20px; 
+  margin-left: 25px; 
+  font-size: 20px; 
 }
 
 .dino-form {
@@ -36,7 +52,7 @@ h3 {
 }
 
 .image {
-  margin-left: 135px;
+  margin-left: 15%;
 }
 
 .button {
@@ -62,6 +78,7 @@ h3 {
 .sentence {
   margin-left: 50px;
   margin-top: 25px;
+  font-size: 20px; 
 }
 
 .hidden {
