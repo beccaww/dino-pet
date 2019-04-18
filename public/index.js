@@ -11,11 +11,15 @@ function fetchEgg(e) {
       })
     })
     .then(res => res.json())
-    .then(json => console.log(json))
+    .then(json => {
+      const pets = localStorage.getItem('pets');
+      console.log('pets', pets);
+      const pet_string = `${json.id},${pets}`;
+      localStorage.setItem('pets', pet_string);
+      window.location = ('/pets.html');
+    })
     .catch(err => console.error(err));
 
-  window.location.replace("/pets.html");
-  return false;
 }
 
 function choosePet() {

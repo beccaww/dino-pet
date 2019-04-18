@@ -1,4 +1,17 @@
 function fetchPets() {
+  //get pet ids from local storage
+  const pets = localStorage.getItem('pets');
+  console.log(pets); 
+  pets.split(',');
+  console.log(pets.split(','));
+  //iterate over all ids
+  function forEachId(callback) {
+    for (i=0; i < pets.length; i++) {
+      callback(pets.key(i)); 
+    }
+}
+
+  // display them
   fetch('/pets')
     .then(res => res.json())
     .then(json => {
