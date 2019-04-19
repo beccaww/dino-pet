@@ -43,7 +43,7 @@ app.post('/pets', jsonParser, (req, res) => {
 app.get('/pets/:id', (req, res) => {
   Pet
     .findById(req.params.id)
-    .then(pet => res.json(pet))
+    .then(pet => res.json(pet.serialize()))
     .catch(err => {
       console.error(err);
       res.status(404).json({

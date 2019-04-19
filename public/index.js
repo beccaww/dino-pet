@@ -12,10 +12,9 @@ function fetchEgg(e) {
     })
     .then(res => res.json())
     .then(json => {
-      const pets = localStorage.getItem('pets');
-      console.log('pets', pets);
-      const pet_string = `${json.id},${pets}`;
-      localStorage.setItem('pets', pet_string);
+      let pets = localStorage.getItem('pets');
+      pets = pets ? `${json.id},${pets}` : json.id;
+      localStorage.setItem('pets', pets);
       window.location = ('/pets.html');
     })
     .catch(err => console.error(err));

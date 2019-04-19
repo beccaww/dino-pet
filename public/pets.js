@@ -1,23 +1,23 @@
 function fetchPets() {
   //get pet ids from local storage
-  const pets = localStorage.getItem('pets');
-  console.log(pets); 
-  pets.split(',');
-  console.log(pets.split(','));
+  const pets = getMyPets(); 
+  
   //iterate over all ids
-  function forEachId(callback) {
-    for (i=0; i < pets.length; i++) {
-      callback(pets.key(i)); 
-    }
+Promise.all(pets.map(fetchPet)).then(pets => {
+  const html = pets.map(displayPet).join('');
+  $('#content').html(html); 
+});
+
 }
 
-  // display them
-  fetch('/pets')
-    .then(res => res.json())
-    .then(json => {
-      $('#content').html('');
-      $('#content').append(json.pets.map(displayPet));
-    });
+function getMyPets() { 
+  const petStr = localStorage.getItem('pets');
+  return petStr ? petStr.split(',') : [];
+}
+
+const fetchPet = (petId) => {
+  return fetch(`/pets/${petId}`)
+    .then(res => res.json());
 }
 
 function displayPet(pet) {
@@ -43,7 +43,12 @@ function deletePet(e) {
         'content-type': 'application/json'
       }
     })
-    .then(fetchPets)
+    .then(() => {
+      const pets = getMyPets(); 
+      pets.splice(pets.indexOf(petId), 1); 
+      localStorage.setItem('pets', pets.toString()); 
+      fetchPets();
+    })
     .catch(err => console.error(err));
   console.log("Deleting pet");
 }
