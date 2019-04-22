@@ -8,17 +8,9 @@ const mongoose = require('mongoose');
 const should = chai.should();
 const expect = chai.expect;
 
-const {
-  Pet
-} = require('../models');
-const {
-  closeServer,
-  runServer,
-  app
-} = require('../server');
-const {
-  TEST_DATABASE_URL
-} = require('../config');
+const { Pet } = require('../models');
+const { closeServer, runServer, app } = require('../server');
+const { TEST_DATABASE_URL } = require('../config');
 
 
 chai.use(chaiHttp);
