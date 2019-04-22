@@ -118,7 +118,7 @@ describe('pets API resource', function () {
 });
 
 
-describe('POST endpoint', function (done) {
+describe('POST endpoint', function () {
 
   it('should add a new pet', function () {
 
@@ -146,7 +146,6 @@ describe('POST endpoint', function (done) {
         pet.state.should.equal(newPet.state);
       });
   });
-  done(); 
 });
 
 describe('PUT endpoint', function () {
@@ -198,6 +197,7 @@ it('should delete a pet by id', function () {
     });
 });
 }); 
+// }); 
 
 
 
