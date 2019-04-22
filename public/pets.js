@@ -1,16 +1,15 @@
 function fetchPets() {
-  //get pet ids from local storage
-  const pets = getMyPets(); 
-  
-  //iterate over all ids
-Promise.all(pets.map(fetchPet)).then(pets => {
-  const html = pets.map(displayPet).join('');
-  $('#content').html(html); 
-});
+  const pets = getMyPets();
+
+
+  Promise.all(pets.map(fetchPet)).then(pets => {
+    const html = pets.map(displayPet).join('');
+    $('#content').html(html);
+  });
 
 }
 
-function getMyPets() { 
+function getMyPets() {
   const petStr = localStorage.getItem('pets');
   return petStr ? petStr.split(',') : [];
 }
@@ -44,9 +43,9 @@ function deletePet(e) {
       }
     })
     .then(() => {
-      const pets = getMyPets(); 
-      pets.splice(pets.indexOf(petId), 1); 
-      localStorage.setItem('pets', pets.toString()); 
+      const pets = getMyPets();
+      pets.splice(pets.indexOf(petId), 1);
+      localStorage.setItem('pets', pets.toString());
       fetchPets();
     })
     .catch(err => console.error(err));
