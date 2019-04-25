@@ -94,7 +94,7 @@ describe('pets API resource', function () {
           resPet.state.should.equal(pet.state);
         });
     });
-  });
+
 
   it('should return pet with right fields', function () {
     return Pet.insertMany({
@@ -197,7 +197,7 @@ it('should delete a pet by id', function () {
     });
 });
 }); 
-// }); 
+}); 
 
 
 
