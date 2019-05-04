@@ -6,6 +6,14 @@ function backButton() {
   window.location.replace("/pets.html");
 }
 
+function fetchPets() {
+  const pets = getMyPets();
+}
+
+function getMyPets() {
+  const petStr = localStorage.getItem('pets');
+  return petStr ? petStr.split(',') : [];
+}
 
 function deleteButton() {
   const petId = location.search.split("=")[1];
@@ -13,6 +21,10 @@ function deleteButton() {
       method: "DELETE"
     })
     .then(() => {
+      const pets = getMyPets();
+      pets.splice(pets.indexOf(petId), 1);
+      localStorage.setItem('pets', pets.toString());
+      fetchPets();
       window.location.replace("/pets.html");
     })
     .catch(err => console.error(err));

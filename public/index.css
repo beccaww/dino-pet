@@ -59,14 +59,14 @@ h3 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 15%;
 }
 
 .d{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 15%;
 }
 
 
@@ -82,10 +82,30 @@ h3 {
   border: 2px dotted #328464;
   border-radius: 5px;
   width: 200px;
+  margin: 40px; 
 }
 
+.top-list li{
+  display: inline-block;
+  list-style: none; 
+  padding: 10px; 
+}
+
+.col-8 {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  padding: 10px;
+}
+
+
+#content { 
+  display: inline-block;
+}
+
+
 .image {
-  margin-left: 15%;
+  margin-left: 35%;
 }
 
 .button {
@@ -103,13 +123,21 @@ h3 {
   margin-left: 50px;
 }
 
+
 .delete {
   background-color: #73172d;
+}
+
+.buttons {
+  display: inline-block; 
+  position: relative; 
+  left: 10%; 
 }
 
 
 .sentence {
   margin-top: 25px;
+  margin-left: 18%; 
   font-size: 20px; 
 }
 
