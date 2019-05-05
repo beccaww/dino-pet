@@ -32,6 +32,11 @@ h3 {
   margin-left: 50px; 
 }
 
+.egghatch {
+  position: relative; 
+  left: 33%;  
+}
+
 .welcome {
   padding: 20px;
   margin-top: 20px;  
