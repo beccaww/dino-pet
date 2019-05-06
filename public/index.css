@@ -3,6 +3,7 @@
   font-family: 'Rajdhani', sans-serif;
 }
 
+
 body {
   position: relative;
   background: #e3e6ff;
@@ -19,8 +20,8 @@ h1 {
 }
 
 h2 {
-  margin-left: 50px; 
-  color: #328464; 
+  margin-left: 50px;
+  color: #328464;
   text-align: center;
 }
 
@@ -28,36 +29,32 @@ h3 {
   margin-left: 50px;
 }
 
-.create-pet, .view-pet {
-  margin-left: 50px; 
-}
-
 .egghatch {
-  position: relative; 
-  left: 33%;  
+  display: block;
+  margin: 0 auto;
 }
 
 .welcome {
   padding: 20px;
-  margin-top: 20px;  
+  margin-top: 20px;
   font-size: 20px;
-  margin: 0 auto; 
+  margin: 0 auto;
   text-align: center;
 }
 
-.center { 
+.center {
   margin: auto;
-  width: 50%;
+  width: 480px;
 }
 
 .create-pet {
   display: inline-block;
-  width: 200px; 
+  width: 200px;
 }
 
 .view-pet {
-  display: inline-block; 
-  width: 200px; 
+  display: inline-block;
+  width: 200px;
 }
 
 .b {
@@ -67,7 +64,7 @@ h3 {
   width: 15%;
 }
 
-.d{
+.d {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -77,6 +74,7 @@ h3 {
 
 .dino-form {
   padding: 20px;
+  margin-left: 40%; 
 }
 
 .create-another-pet {
@@ -87,13 +85,13 @@ h3 {
   border: 2px dotted #328464;
   border-radius: 5px;
   width: 200px;
-  margin: 40px; 
+  margin: 40px;
 }
 
-.top-list li{
+.top-list li {
   display: inline-block;
-  list-style: none; 
-  padding: 10px; 
+  list-style: none;
+  padding: 10px;
 }
 
 .col-8 {
@@ -104,7 +102,7 @@ h3 {
 }
 
 
-#content { 
+#content {
   display: inline-block;
 }
 
@@ -112,6 +110,8 @@ h3 {
 .image {
   margin-left: 35%;
 }
+
+
 
 .button {
   display: inline-block;
@@ -134,16 +134,16 @@ h3 {
 }
 
 .buttons {
-  display: inline-block; 
-  position: relative; 
-  left: 10%; 
+  display: inline-block;
+  position: relative;
+  left: 10%;
 }
 
 
 .sentence {
   margin-top: 25px;
-  margin-left: 18%; 
-  font-size: 20px; 
+  margin-left: 18%;
+  font-size: 20px;
 }
 
 .hidden {
@@ -179,4 +179,36 @@ input:checked {
 
 label {
   display: block;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 400px) {
+  
+  img {
+    margin-left: -50%;
+  }
+
+  .egghatch { 
+    max-width: 350px; 
+  }
+
+  .create-pet{
+    margin: 0 auto; 
+  }
+
+  .view-pet {
+    margin: auto; 
+  }
+
+  .create-pet, .view-pet {
+    display: block; 
+  }
+
+  .center {
+    max-width: 350px; 
+  }
+
+  .buttons {
+    left: auto;
+  }
 }
