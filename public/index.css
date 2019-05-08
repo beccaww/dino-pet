@@ -147,6 +147,7 @@ h3 {
   padding: 30px;
   text-align: center; 
   width: 480px; 
+  clear: both;
 }
 
 .hidden {
@@ -232,5 +233,59 @@ label {
     text-align: left; 
     max-width: 350px; 
     margin-left: 1%; 
+  }
+}
+
+
+/* Tablet Styles */
+@media only screen and (min-width: 401px) and (max-width: 960px) {
+  img {
+    margin-left: 25%;
+  }
+ 
+  .egghatch { 
+    max-width: 390px; 
+  }
+
+  .create-pet{
+    margin: 0 auto; 
+  }
+
+  .view-pet {
+    margin: auto; 
+  }
+
+  .center {
+    max-width: 75%; 
+  }
+
+  .dino-form { 
+    margin-left: 20%; 
+    padding: 20px; 
+  }
+
+  .pet { 
+    display: block; 
+    margin: auto;   
+    max-width: 390px; 
+  }
+
+  .image {
+    display: block; 
+    margin: auto; 
+    max-width: 390px; 
+  }
+
+  .buttons {
+    right: 20px; 
+    max-width: 390px; 
+  }
+
+  .sentence { 
+    text-align: center; 
+    margin-left: 20%;
+    vertical-align: 10%;  
+    clear: both;
+    max-width: 390px;
   }
 }
