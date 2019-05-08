@@ -115,7 +115,7 @@ h3 {
 
 .button {
   display: inline-block;
-  padding: 20px;
+  padding: 10px;
   border: none;
   background-color: #328464;
   color: white;
@@ -144,6 +144,9 @@ h3 {
   margin-top: 25px;
   margin-left: 18%;
   font-size: 20px;
+  padding: 30px;
+  text-align: center; 
+  width: 480px; 
 }
 
 .hidden {
@@ -210,5 +213,24 @@ label {
 
   .buttons {
     left: auto;
+    right: 20px; 
+    max-width: 350px; 
+  }
+
+  .dino-form {
+    padding: 20px;
+    margin: auto; 
+  }
+
+  .pet-image { 
+    display: block; 
+    margin: auto; 
+    max-width: 350px; 
+  }
+
+  .sentence { 
+    text-align: left; 
+    max-width: 350px; 
+    margin-left: 1%; 
   }
 }
