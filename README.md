@@ -1,8 +1,6 @@
 # Dino-pets
 
-Links: 
-
-https://beccaww.github.io/dino-pet/public/index.html
+Link: 
 
 https://whispering-scrubland-42616.herokuapp.com/
 
@@ -17,8 +15,7 @@ HTML, CSS, JavaScript, jQuery, Node.js
 
 Screenshots:
 
-![Create a pet page](Screenshot_Dino_Pets.png)
-![Pets page](Screenshot_Dino_Pets(1).png)
-![Egg page 1](Screenshot_Dino_Pets(2).png)
-![Egg page 2](Screenshot_Dino_Pets(3).png)
-![Pet page](Screenshot_Dino_Pets(4).png)
+![Landing page](Screenshot_landing.png)
+![Choose pet page](Screenshot_chose.png)
+![Egg page](Screenshot_egg.png)
+![Pet page](Screenshot_pet.png)
