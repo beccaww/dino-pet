@@ -75,6 +75,7 @@ h3 {
 .dino-form {
   padding: 20px;
   margin-left: 40%; 
+  clear: both; 
 }
 
 .create-another-pet {
@@ -144,8 +145,7 @@ h3 {
   margin-top: 25px;
   margin-left: 18%;
   font-size: 20px;
-  padding: 30px;
-  text-align: center; 
+  padding: 13px;
   width: 480px; 
   clear: both;
 }
@@ -282,10 +282,16 @@ label {
   }
 
   .sentence { 
-    text-align: center; 
     margin-left: 20%;
     vertical-align: 10%;  
     clear: both;
     max-width: 390px;
+  }
+}
+
+/* Desktop Styles */
+@media only screen and (min-width: 961px) {
+  .buttons {
+    width: 100%; 
   }
 }
